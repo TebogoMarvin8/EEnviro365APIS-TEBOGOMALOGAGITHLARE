@@ -1,0 +1,69 @@
+# EEnviro365 API Documentation
+
+Welcome to the EEnviro365 API documentation. This API facilitates file data processing for environmental consulting. Clients can upload text files containing environmental data for analysis and retrieve processed results through simple API requests. Below are the available endpoints and their descriptions.
+
+## Base URL
+
+The base URL for all API requests is: `http://localhost:8080`
+
+## Authentication
+
+API requests require authentication using an API key provided by EEnviro365. Include the API key in the request headers using the `Authorization` field.
+
+---
+
+## Upload Endpoint
+
+**Endpoint:** /api/upload  
+**Method:** POST
+
+#### Description:
+
+Uploads a text file containing environmental data for processing. The API processes the data and saves it to the database for analysis.
+
+#### Parameters:
+
+- `file` (multipart/form-data): The text file containing environmental data.
+
+#### Headers:
+
+- `Content-Type`: multipart/form-data
+- `Authorization`: Bearer {api_key}
+
+#### Responses:
+
+- 200 OK: If the file is successfully uploaded and processed.
+- 400 Bad Request: If no file is selected or if the uploaded file is not a text file.
+- 500 Internal Server Error: If an error occurs during file processing.
+
+#### Example:
+
+Upload a text file named `environment_data.txt` containing environmental data.
+
+---
+
+## Data Endpoint
+
+**Endpoint:** /api/data  
+**Method:** GET
+
+#### Description:
+
+Retrieves all environmental data stored in the database.
+
+#### Parameters:
+
+None
+
+#### Headers:
+
+- `Authorization`: Bearer {api_key}
+
+#### Responses:
+
+- 200 OK: Returns a list of environmental data objects.
+- 500 Internal Server Error: If an error occurs while retrieving the data.
+
+#### Example:
+
+Retrieve all environmental data.
